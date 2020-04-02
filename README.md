@@ -43,8 +43,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/edgexfoundry/app-functions-sdk-go/appsdk"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/transforms"
+	"github.com/tuanldchainos/app-functions-sdk-go/appsdk"
+	"github.com/tuanldchainos/app-functions-sdk-go/pkg/transforms"
 	"os"
 )
 
@@ -623,7 +623,7 @@ Password = ""
 
 When an export function encounters an error sending data it can call `SetRetryData(payload []byte)` on the Context. This will store the data for later retry. If the application service is stop and then restarted while stored data hasn't been successfully exported, the export retry will resume once the service is up and running again.
 
-> *Note: It is important that export functions return an error and stop pipeline execution* after the call to `SetRetryData`. See [HTTPPost](https://github.com/edgexfoundry/app-functions-sdk-go/blob/master/pkg/transforms/http.go) function in SDK as an example
+> *Note: It is important that export functions return an error and stop pipeline execution* after the call to `SetRetryData`. See [HTTPPost](https://github.com/tuanldchainos/app-functions-sdk-go/blob/master/pkg/transforms/http.go) function in SDK as an example
 
 When the `RetryInterval` expires, the function pipeline will be re-executed starting with the export function that saved the data. The saved data will be passed to the export function which can then attempt to resend the data. 
 

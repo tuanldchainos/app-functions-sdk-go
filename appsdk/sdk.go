@@ -277,8 +277,8 @@ func (sdk *AppFunctionsSDK) ApplicationSettings() map[string]string {
 	return sdk.config.ApplicationSettings
 }
 
-func (sdk *AppFunctionsSDK) GetClientsInfo() map[string]common.ClientInfo {
-	return sdk.config.Clients
+func (sdk *AppFunctionsSDK) GetServiceUrl(serviceName string) string {
+	return sdk.config.Clients[serviceName].Url()
 }
 
 // GetAppSettingStrings returns the strings slice for the specified App Setting.

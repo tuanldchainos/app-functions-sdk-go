@@ -38,7 +38,9 @@ import (
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/command"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/coredata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/metadata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/notifications"
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/scheduler"
 	"github.com/edgexfoundry/go-mod-core-contracts/models"
 	"github.com/edgexfoundry/go-mod-registry/pkg/types"
 	"github.com/edgexfoundry/go-mod-registry/registry"
@@ -273,6 +275,10 @@ func (sdk *AppFunctionsSDK) SetFunctionsPipeline(transforms ...appcontext.AppFun
 // ApplicationSettings returns the values specifed in the custom configuration section.
 func (sdk *AppFunctionsSDK) ApplicationSettings() map[string]string {
 	return sdk.config.ApplicationSettings
+}
+
+func (sdk *AppFunctionsSDK) GetClientsInfo() map[string]common.ClientInfo {
+	return sdk.config.Clients
 }
 
 // GetAppSettingStrings returns the strings slice for the specified App Setting.
@@ -593,6 +599,18 @@ func (sdk *AppFunctionsSDK) initializeClients() {
 			),
 		)
 
+		sdk.edgexClients.ReadingClient = coredata.NewReadingClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.CoreDataServiceKey,
+				clients.ApiReadingRoute,
+				interval,
+				sdk.config.Clients[common.CoreDataClientName].Url()+clients.ApiReadingRoute,
+			),
+		)
+
 		sdk.edgexClients.ValueDescriptorClient = coredata.NewValueDescriptorClient(
 			urlclient.New(
 				context.Background(),
@@ -633,6 +651,71 @@ func (sdk *AppFunctionsSDK) initializeClients() {
 			),
 		)
 	}
+
+	if _, ok := sdk.config.Clients[common.MetadataClientName]; ok {
+		sdk.edgexClients.AddressableClient = metadata.NewAddressableClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.CoreMetaDataServiceKey,
+				clients.ApiAddressableRoute,
+				interval,
+				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiAddressableRoute,
+			),
+		)
+
+		sdk.edgexClients.DeviceClient = metadata.NewDeviceClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.CoreMetaDataServiceKey,
+				clients.ApiDeviceRoute,
+				interval,
+				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiDeviceRoute,
+			),
+		)
+
+		sdk.edgexClients.ProvisionWatcherClient = metadata.NewProvisionWatcherClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.CoreMetaDataServiceKey,
+				clients.ApiProvisionWatcherRoute,
+				interval,
+				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiProvisionWatcherRoute,
+			),
+		)
+	}
+
+	if _, ok := sdk.config.Clients[common.SchedulerClientName]; ok {
+		sdk.edgexClients.IntervalClient = scheduler.NewIntervalClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.SupportSchedulerServiceKey,
+				clients.ApiIntervalRoute,
+				interval,
+				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiIntervalRoute,
+			),
+		)
+
+		sdk.edgexClients.IntervalActionClient = scheduler.NewIntervalActionClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.SupportSchedulerServiceKey,
+				clients.ApiIntervalActionRoute,
+				interval,
+				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiIntervalActionRoute,
+			),
+		)
+	}
+
 }
 
 func (sdk *AppFunctionsSDK) initializeConfiguration(configuration *common.ConfigurationStruct) error {

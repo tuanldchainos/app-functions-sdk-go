@@ -20,7 +20,9 @@ import (
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/command"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/coredata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/metadata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/notifications"
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/scheduler"
 )
 
 const (
@@ -28,12 +30,20 @@ const (
 	CoreCommandClientName   = "Command"
 	CoreDataClientName      = "CoreData"
 	NotificationsClientName = "Notifications"
+	MetadataClientName      = "Metadata"
+	SchedulerClientName     = "Scheduler"
 )
 
 type EdgeXClients struct {
-	LoggingClient         logger.LoggingClient
-	EventClient           coredata.EventClient
-	CommandClient         command.CommandClient
-	ValueDescriptorClient coredata.ValueDescriptorClient
-	NotificationsClient   notifications.NotificationsClient
+	LoggingClient          logger.LoggingClient
+	EventClient            coredata.EventClient
+	ReadingClient          coredata.ReadingClient
+	CommandClient          command.CommandClient
+	ValueDescriptorClient  coredata.ValueDescriptorClient
+	NotificationsClient    notifications.NotificationsClient
+	AddressableClient      metadata.AddressableClient
+	DeviceClient           metadata.DeviceClient
+	ProvisionWatcherClient metadata.ProvisionWatcherClient
+	IntervalClient         scheduler.IntervalClient
+	IntervalActionClient   scheduler.IntervalActionClient
 }

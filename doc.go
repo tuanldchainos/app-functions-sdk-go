@@ -9,7 +9,7 @@
 //     Schemes: http
 //     Host: localhost
 //     BasePath: /api/v1/
-//     Version: 1.0.0
+//     Version: 1.0.1
 //     License: Apache-2.0 https://github.com/tuanldchainos/app-functions-sdk-go/blob/master/LICENSE
 //
 //     Contact: https://edgex.discourse.group/c/applications

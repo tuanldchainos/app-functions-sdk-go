@@ -699,7 +699,7 @@ func (sdk *AppFunctionsSDK) initializeClients() {
 				clients.SupportSchedulerServiceKey,
 				clients.ApiIntervalRoute,
 				interval,
-				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiIntervalRoute,
+				sdk.config.Clients[common.SchedulerClientName].Url()+clients.ApiIntervalRoute,
 			),
 		)
 
@@ -711,7 +711,7 @@ func (sdk *AppFunctionsSDK) initializeClients() {
 				clients.SupportSchedulerServiceKey,
 				clients.ApiIntervalActionRoute,
 				interval,
-				sdk.config.Clients[common.MetadataClientName].Url()+clients.ApiIntervalActionRoute,
+				sdk.config.Clients[common.SchedulerClientName].Url()+clients.ApiIntervalActionRoute,
 			),
 		)
 	}

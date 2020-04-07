@@ -288,7 +288,7 @@ func (sdk *AppFunctionsSDK) GetServiceURLViaRegistry(serviceName string) (string
 	if err != nil {
 		return "", err
 	}
-	url := fmt.Sprintf("%s:%d", endpoint.Host, endpoint.Port)
+	url := fmt.Sprintf("%s://%s:%v", "http", endpoint.Host, endpoint.Port)
 	return url, nil
 }
 

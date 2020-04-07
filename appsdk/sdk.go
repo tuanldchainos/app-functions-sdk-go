@@ -277,8 +277,19 @@ func (sdk *AppFunctionsSDK) ApplicationSettings() map[string]string {
 	return sdk.config.ApplicationSettings
 }
 
-func (sdk *AppFunctionsSDK) GetServiceUrl(serviceName string) string {
+// GetServiceURLViaConfigFile return url of edgex service in config file of application service
+func (sdk *AppFunctionsSDK) GetServiceURLViaConfigFile(serviceName string) string {
 	return sdk.config.Clients[serviceName].Url()
+}
+
+// GetServiceURLViaRegistry return url of edgex service in registry service
+func (sdk *AppFunctionsSDK) GetServiceURLViaRegistry(serviceName string) (string, error) {
+	endpoint, err := sdk.registryClient.GetServiceEndpoint(serviceName)
+	if err != nil {
+		return "", err
+	}
+	url := fmt.Sprintf("%s:%d", endpoint.Host, endpoint.Port)
+	return url, nil
 }
 
 // GetAppSettingStrings returns the strings slice for the specified App Setting.

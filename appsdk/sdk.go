@@ -35,6 +35,7 @@ import (
 	toml "github.com/pelletier/go-toml"
 
 	"github.com/edgexfoundry/go-mod-core-contracts/clients"
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/agent"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/command"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/coredata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
@@ -727,6 +728,19 @@ func (sdk *AppFunctionsSDK) initializeClients() {
 		)
 	}
 
+	if _, ok := sdk.config.Clients[common.AgentClientName]; ok {
+		sdk.edgexClients.AgentClient = agent.NewAgentClient(
+			urlclient.New(
+				context.Background(),
+				wg,
+				sdk.registryClient,
+				clients.SystemManagementAgentServiceKey,
+				clients.ApiConfigRoute,
+				interval,
+				sdk.config.Clients[common.AgentClientName].Url()+clients.ApiConfigRoute,
+			),
+		)
+	}
 }
 
 func (sdk *AppFunctionsSDK) initializeConfiguration(configuration *common.ConfigurationStruct) error {

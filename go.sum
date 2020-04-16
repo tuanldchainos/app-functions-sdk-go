@@ -10,12 +10,15 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/diegoholiveira/jsonlogic v1.0.1-0.20200220175622-ab7989be08b9/go.mod h1:9STzWAIpeXT1gYFvw0JM+BkyMmPKYv/ztBNgXX4hAOw=
 github.com/eclipse/paho.mqtt.golang v1.2.0/go.mod h1:H9keYFcgq3Qr5OUJm/JZI/i6U7joQ8SYLhZwfeOo6Ts=
 github.com/edgexfoundry/go-mod-core-contracts v0.1.52/go.mod h1:5kX5khz4bM5loKPFK2dnR+LBo89p9vgYPbu7Iv1MIhY=
+github.com/edgexfoundry/go-mod-core-contracts v0.1.57 h1:sWnrL3KOqb+yNP77yUBzCNa7hf0WEE7tsk9MYhtL05E=
+github.com/edgexfoundry/go-mod-core-contracts v0.1.57/go.mod h1:PZftdIepJDgXbjBR4hZuDZkDdn0CFnZTUm7HPA0RbLE=
 github.com/edgexfoundry/go-mod-messaging v0.1.16/go.mod h1:ScMHhOCxUNiV1hGlmb3EYH9na2TtLBMfTiWvpyVgiM0=
 github.com/edgexfoundry/go-mod-registry v0.1.11/go.mod h1:B0mmVhtERPDhxeD8MQnMJhNwPiy0/lPgAdoCOOVtGrY=
 github.com/edgexfoundry/go-mod-registry v0.1.20 h1:DIa3Oocfd2ixLeOT60qaqq/tLx5V45V1ZfUDlxCSipU=
 github.com/edgexfoundry/go-mod-registry v0.1.20/go.mod h1:0vB1a8TmW8dvucA7G7WyjmSJS1OJhMTvhrkJ7BaPba4=
 github.com/edgexfoundry/go-mod-secrets v0.0.17/go.mod h1:f/Dewr5JYxJgwSaM1jtY1FP3oDjngQprh53jx0cPmL4=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+github.com/fxamacker/cbor/v2 v2.2.0/go.mod h1:TA1xS00nchWmaBnEIxPSE5oHLuJBAVvqrtAnWBwBCVo=
 github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
@@ -75,6 +78,7 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=
+github.com/x448/float16 v0.8.4/go.mod h1:14CWIYCyZA/cWjXOioeEpHeN/83MdbZDRQHoFcYsOfg=
 github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c/go.mod h1:lB8K/P019DLNhemzwFU4jHLhdvlE6uDZjXFejJXr49I=
 github.com/xdg/stringprep v1.0.0/go.mod h1:Jhud4/sHMO4oL310DaZAKk9ZaJ08SJfe+sJh0HrGL1Y=
 go.mongodb.org/mongo-driver v1.1.1/go.mod h1:u7ryQJ+DOzQmeO7zB6MHyr8jkEQvC8vH7qLUO4lqsUM=

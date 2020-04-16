@@ -17,6 +17,7 @@
 package common
 
 import (
+	"github.com/edgexfoundry/go-mod-core-contracts/clients/agent"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/command"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/coredata"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
@@ -32,6 +33,7 @@ const (
 	NotificationsClientName = "Notifications"
 	MetadataClientName      = "Metadata"
 	SchedulerClientName     = "Scheduler"
+	AgentClientName         = "Agent"
 )
 
 type EdgeXClients struct {
@@ -46,4 +48,5 @@ type EdgeXClients struct {
 	ProvisionWatcherClient metadata.ProvisionWatcherClient
 	IntervalClient         scheduler.IntervalClient
 	IntervalActionClient   scheduler.IntervalActionClient
+	AgentClient            agent.AgentClient
 }

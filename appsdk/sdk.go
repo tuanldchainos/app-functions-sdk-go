@@ -314,8 +314,8 @@ func (sdk *AppFunctionsSDK) GetAppSettingStrings(setting string) ([]string, erro
 func (sdk *AppFunctionsSDK) Initialize() error {
 	applyCommandlineEnvironmentOverrides()
 
-	flag.BoolVar(&sdk.useRegistry, "registry", false, "Indicates the service should use the registry.")
-	flag.BoolVar(&sdk.useRegistry, "r", false, "Indicates the service should use registry.")
+	flag.BoolVar(&sdk.useRegistry, "registry", true, "Indicates the service should use the registry.")
+	flag.BoolVar(&sdk.useRegistry, "r", true, "Indicates the service should use registry.")
 
 	flag.StringVar(&sdk.configProfile, "profile", "", "Specify a profile other than default.")
 	flag.StringVar(&sdk.configProfile, "p", "", "Specify a profile other than default.")
